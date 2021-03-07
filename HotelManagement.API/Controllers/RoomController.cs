@@ -21,10 +21,10 @@ namespace HotelManagement.API.Controllers
         }
 
         [HttpGet]
-        [Route("{roomId:int}")]
-        public async Task<IActionResult> GetRoomById(int roomId)
+        [Route("{id:int}")]
+        public async Task<IActionResult> GetRoomById(int id)
         {
-            var room = await _roomService.GetRoomById(roomId);
+            var room = await _roomService.GetRoomById(id);
             if (room != null)
             {
                 return Ok(room);
@@ -34,7 +34,7 @@ namespace HotelManagement.API.Controllers
         }
 
         [HttpGet]
-        [Route("")]
+        [Route("all")]
         public async Task<IActionResult> GetAllRooms()
         {
             var rooms = await _roomService.GetAllRooms();
@@ -65,9 +65,9 @@ namespace HotelManagement.API.Controllers
 
         [HttpDelete]
         [Route("delete/{id:int}")]
-        public async Task<IActionResult> DeleteRoom(int roomId)
+        public async Task<IActionResult> DeleteRoom(int id)
         {
-            await _roomService.DeleteRoom(roomId);
+            await _roomService.DeleteRoom(id);
             return NoContent();
         }
     }

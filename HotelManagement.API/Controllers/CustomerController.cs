@@ -21,10 +21,10 @@ namespace HotelManagement.API.Controllers
         }
 
         [HttpGet]
-        [Route("{customerId:int}")]
-        public async Task<IActionResult> GetCustomerById(int customerId)
+        [Route("{id:int}")]
+        public async Task<IActionResult> GetCustomerById(int id)
         {
-            var customer = await _customerService.GetCustomerById(customerId);
+            var customer = await _customerService.GetCustomerById(id);
             if (customer != null)
             {
                 return Ok(customer);
@@ -34,7 +34,7 @@ namespace HotelManagement.API.Controllers
         }
 
         [HttpGet]
-        [Route("")]
+        [Route("all")]
         public async Task<IActionResult> GetAllCustomers()
         {
             var customers = await _customerService.GetAllCustomers();
@@ -64,9 +64,9 @@ namespace HotelManagement.API.Controllers
 
         [HttpDelete]
         [Route("delete/{id:int}")]
-        public async Task<IActionResult> DeleteCustomer(int customerId)
+        public async Task<IActionResult> DeleteCustomer(int id)
         {
-            await _customerService.DeleteCustomer(customerId);
+            await _customerService.DeleteCustomer(id);
             return NoContent();
         }
     }
